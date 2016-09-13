@@ -21,7 +21,7 @@ y = np.array([[0, 0, 1, 1]]).T
 syn0 = np.random.random((3, 1)) - 1
 print("weight is :", syn0)
 print(X)
-for iter in range(10000):
+for iter in range(10):
     # forward propagation
     l0 = X
     l1 = nonlin(np.dot(l0, syn0))
@@ -32,5 +32,6 @@ for iter in range(10000):
     l1_delta = l1_error * nonlin(l1, True)
     # update weights
     syn0 += np.dot(l0.T, l1_delta)
+    print(l1)
 print("Output After Training:")
 print(l1)
