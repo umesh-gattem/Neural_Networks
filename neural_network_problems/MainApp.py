@@ -15,5 +15,5 @@ training_data = [(np.array([[0, 0]]), np.array([[1]])),
                  (np.array([[0, 1]]), np.array([[1]])),
                  (np.array([[1, 1]]), np.array([[0]]))]
 test_data = training_data
-network.SGD(training_data, 1000, 4, 8.0, test_data=test_data)
+network.SGD(training_data, 1000, 4, 0.9, test_data=test_data)
 # network.train_data(training_data, 1000, 4, 1.0, test_data=test_data)

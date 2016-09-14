@@ -38,6 +38,7 @@ class Network(object):
         self.weights = [w - (learn_rate / len(each_batch)) * nw for w, nw in zip(self.weights, initial_weights)]
         self.biases = [b - (learn_rate / len(each_batch)) * nb for b, nb in zip(self.biases, initial_bias)]
 
+
     def feedforward(self, input):
         activation = input.T
         for b, w in zip(self.biases, self.weights):
