@@ -1,15 +1,28 @@
-from neural_network_problems import network_for_nand_operation
+"""
+This python file is used to read csv file using pandas and
+defines the input and output for oyr network model.
+@since 15-09-2016
+"""
+
+import pandas as pd
 import numpy as np
+from neural_network_problems import network_model
 
-layer_size = [2, 6, 1]
-network = network_for_nand_operation.Network(layer_size)
-training_data = [(np.array([[0, 0]]), np.array([[1]])),
-                 (np.array([[1, 0]]), np.array([[1]])),
-                 (np.array([[0, 1]]), np.array([[1]])),
-                 (np.array([[1, 1]]), np.array([[0]]))]
-test_data = training_data
+read_file = pd.read_csv("/home/umesh/mycsv_file.csv")
+train_data_input = []
+train_data_output = []
+for index, row in read_file.iterrows():
+    input = np.array([row[:-1]])
+    output = np.array([[row[len(row)-1]]])
+    train_data_input.append(input)
+    train_data_output.append(output)
 
-for input, output in training_data:
-    print(input, output)
+input_nodes = len(row[:-1])
+output_nodes = 1
+layers = [input_nodes, 6, 8, 9, output_nodes]
+epochs = 8000
+learning_rate = 0.9
 
-# network.train_data(training_data, 10000, 4, 0.9, test_data=test_data)
+network = network_model.NetworkModel(layers, train_data_input, train_data_output, 10000, learning_rate)
+
+
